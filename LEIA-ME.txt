@@ -2,6 +2,10 @@
    USB PELA REDE  -  Redirecionamento de qualquer USB
 ============================================================
 
+AVISO: este e o guia original (Windows). A documentacao atual, com
+LINUX e ATUALIZACAO automatica, esta no README.md. Os caminhos C:\usb
+abaixo sao so exemplo: o programa roda de qualquer pasta.
+
 O QUE FAZ
 ---------
 Voce pluga QUALQUER dispositivo USB (pendrive, HD, token, impressora,
