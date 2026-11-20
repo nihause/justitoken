@@ -1,0 +1,47 @@
+# Lista de PERMISSAO: tudo e ignorado, exceto o que esta liberado abaixo.
+# Motivo: a pasta de trabalho tem backups de build, executaveis de 30 MB+ e
+# copias antigas da API PHP com credenciais de banco. Nada disso deve ir a um
+# repositorio publico.
+*
+
+!.gitignore
+!.gitattributes
+!README.md
+!LEIA-ME.txt
+!VERSION
+!config.example.ini
+
+# Instaladores e atalhos
+!instalar.bat
+!instalar.sh
+!atualizar.bat
+!atualizar.sh
+!usb-estacao.bat
+!usb-estacao.sh
+!usb-estacao.vbs
+!usb-servidor.bat
+!usb-servidor.sh
+!usb-servidor.vbs
+
+# Codigo-fonte
+!Fontes/
+!Fontes/*.py
+!Fontes/*.spec
+!Fontes/*.bat
+!Fontes/requirements.txt
+!Fontes/assets/
+!Fontes/assets/**
+!Fontes/scripts/
+!Fontes/scripts/**
+!Fontes/tests/
+!Fontes/tests/*.py
+
+# Mesmo dentro das pastas liberadas, nunca versionar:
+__pycache__/
+*.pyc
+config.ini
+sessao.dat
+autorizacoes.json
+*.log
+.venv/
+.backup_atualizacao/

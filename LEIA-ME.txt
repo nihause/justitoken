@@ -1,0 +1,82 @@
+============================================================
+   USB PELA REDE  -  Redirecionamento de qualquer USB
+============================================================
+
+O QUE FAZ
+---------
+Voce pluga QUALQUER dispositivo USB (pendrive, HD, token, impressora,
+leitor...) no computador SERVIDOR e ele passa a funcionar no outro
+computador (ESTACAO) como se estivesse plugado nele, pela rede,
+dentro ou fora dela.
+
+COMO FUNCIONA (importante)
+--------------------------
+Isso usa a tecnologia USB/IP. O Python faz a INTERFACE bonita e
+automatiza tudo; o trabalho de baixo nivel (driver) e feito por
+dois motores gratuitos/open-source:
+
+   SERVIDOR -> usbipd-win   (compartilha o USB na porta 3240)
+   ESTACAO  -> usbip-win2   (cliente / driver que anexa o USB)
+
+PASTAS
+------
+  C:\usb\fontes ... codigo-fonte (Python)
+  C:\usb ......... atalhos, instalador e uso
+
+INSTALACAO (rode C:\usb\instalar.bat em cada PC)
+------------------------------------------------
+PASSO 1 - opcao [1]: instala as bibliotecas Python (1x por PC).
+
+PASSO 2 - motor USB/IP:
+  - No PC do dispositivo (SERVIDOR): opcao [2] (instala usbipd-win).
+  - No PC que vai usar (ESTACAO):    opcao [3] (baixa o usbip-win2;
+    rode o instalador .exe; pode pedir 1 reinicio).
+
+PASSO 3 - iniciar com o Windows:
+  - SERVIDOR: opcao [4].   ESTACAO: opcao [5].
+  (os programas passam a abrir sozinhos no logon)
+
+COMO USAR
+---------
+NO SERVIDOR:
+  - Abra o programa, clique "Liberar Firewall" (1 vez).
+  - Plugue o dispositivo, clique "Atualizar", ache-o na lista
+    e clique "Compartilhar" (confirme o aviso de administrador).
+  - Anote o IP mostrado na tela.
+
+NA ESTACAO:
+  - Digite o IP do servidor e clique "Buscar dispositivos".
+  - No dispositivo desejado, clique "Anexar" (confirme o admin).
+  - Pronto: ele aparece no Windows (Este Computador / Dispositivos /
+    Impressoras) como se estivesse plugado aqui.
+
+FORA DA REDE (internet)
+-----------------------
+No roteador do SERVIDOR, encaminhe a porta 3240 para o IP do PC
+servidor. Na Estacao, use o IP PUBLICO do servidor.
+
+PONTOS IMPORTANTES (atritos do USB/IP - valem para qualquer ferramenta)
+----------------------------------------------------------------------
+- Compartilhar e anexar PEDEM permissao de administrador (UAC).
+  O programa pede so na hora da acao; a janela em si abre sem admin.
+- O cliente (usbip-win2) instala um driver. Dependendo da versao do
+  Windows pode pedir para ativar "test-signing" e reiniciar 1 vez.
+- Um dispositivo compartilhado fica "ocupado": enquanto a Estacao
+  usa, ele nao aparece no proprio servidor (igual desplugar de la).
+
+MODO ARQUIVOS (alternativa sem driver) - opcao [9]
+--------------------------------------------------
+Se voce so quer pendrive/HD (arquivos) e NAO quer instalar driver,
+existe o "modo arquivos" (WebDAV): monta o pendrive como uma letra
+de unidade no outro PC, sem driver nenhum. Nao serve para impressora
+ou token, so para armazenamento.
+
+ARQUIVOS PRINCIPAIS
+-------------------
+  fontes\usb_servidor.py .......... SERVIDOR (USB/IP)
+  fontes\usb_estacao.py ........... ESTACAO  (USB/IP)
+  fontes\usbip_engine.py .......... motor que controla usbipd/usbip
+  fontes\common.py ................ funcoes e tema visual
+  fontes\usb_servidor_arquivos.py . SERVIDOR modo arquivos (WebDAV)
+  fontes\usb_estacao_arquivos.py .. ESTACAO  modo arquivos (WebDAV)
+  instalar.bat .................... instalador / configurador
