@@ -16,7 +16,7 @@ A interface (Python + CustomTkinter) é a mesma nos dois sistemas.
 **Linux:**
 
 ```bash
-git clone https://github.com/rodrigonchagas/justitoken.git
+git clone https://github.com/nihause/justitoken.git
 cd justitoken
 ./instalar.sh        # passo 1 (Python/Tk + bibliotecas), 2 (motor usbip), 4 ou 5 (servidor/estação)
 ./usb-servidor.sh    # ou ./usb-estacao.sh

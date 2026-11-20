@@ -38,7 +38,7 @@ sys.path.insert(0, AQUI)
 import common  # noqa: E402
 
 # Repositorio publico (dono/nome). Pode ser trocado no config.ini: repo_github = dono/nome
-REPO_PADRAO = "rodrigonchagas/justitoken"
+REPO_PADRAO = "nihause/justitoken"
 BRANCH_PADRAO = "main"
 
 PASTA_APP = os.path.dirname(AQUI)  # raiz do projeto (pai de Fontes)
